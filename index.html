@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon says</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header_title">
+            <p>Simon Says game!</p>
+        </div>
+    </header>
+    
+    <section class="container">
+        <div class="container_gameboard">
+            <div id="blue" class="color blue left" data-color="celeste"></div>
+            <div id="violet" class="color violet right" data-color="violeta"></div>
+            <div id="orange" class="color orange left" data-color="naranja"></div>
+            <div id="green" class="color green right" data-color="verde"></div>
+            <button id="btnBegin" class="btn-start" onclick="beginGame()">Start Game!</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <ul class="social_media">
+            <li class="social_media-item">
+                <a href="">
+                    <img src="./assets/github_icon.png" alt="github">
+                </a>
+            </li>
+            <li class="social_media-item">
+                <a href="">
+                    <img src="./assets/linkedin_icon.png" alt="linkedin">
+                </a>
+            </li>
+            <li class="social_media-item">
+                <a href="">
+                    <img src="./assets/instagram_icon.png" alt="instagram">
+                </a>
+            </li>
+            <li class="social_media-item">
+                <a href="">
+                    <img src="./assets/facebook_icon.png" alt="facebook">
+                </a>
+            </li>
+        </ul>
+        <p>Made by Xavier Pérez </p>
+    </footer>
+
+    <script>
+        const btnBegin = document.getElementById('btnBegin')
+        const blue = document.getElementById('blue')
+        const violet = document.getElementById('violet')
+        const orange = document.getElementById('orange')
+        const green = document.getElementById('green')
+
+
+        class Game {
+            constructor () {
+                this.begin()
+                this.generateSequence()
+            }
+
+            begin() {
+                btnBegin.classList.add('hide')
+                this.level = 1
+                //JavaScript entiende que si asignamos a una propiedad una variable
+                //con el mismo nombre, no es necesario colocar los dos puntos :
+                this.colors = {
+                    blue,
+                    violet,
+                    orange,
+                    green
+                }
+            }
+
+            generateSequence() {
+                //Creamos un array para la secuencia que sera de 10 numeros (10 niveles)
+                //Luego llenamos el array con purso ceros con la función 'fill', para
+                //que la función map() pueda trabajar, ya que si no hay elementos, no 
+                //puede ejecutar nada.
+                this.sequence = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
+            }
+        }
+
+
+        function beginGame () {
+            window.game = new Game()
+        }
+    </script>
+</body>
+</html>
