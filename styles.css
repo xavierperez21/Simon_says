@@ -66,16 +66,32 @@ body {
     background: #22A6B3;
 }
 
+.blue.light {
+    background: #7ED6DF;
+}
+
 .violet {
     background: #BE2EDD;
+}
+
+.violet.light {
+    background: #E056FD;
 }
 
 .orange {
     background: #F0932B;
 }
 
+.orange.light {
+    background: #FFBE76;
+}
+
 .green {
     background: #6AB04C;
+}
+
+.green.light {
+    background: #BADC58;
 }
 
 .btn-start {

@@ -15,10 +15,11 @@
     
     <section class="container">
         <div class="container_gameboard">
-            <div id="blue" class="color blue left" data-color="celeste"></div>
-            <div id="violet" class="color violet right" data-color="violeta"></div>
-            <div id="orange" class="color orange left" data-color="naranja"></div>
-            <div id="green" class="color green right" data-color="verde"></div>
+            <!-- The data-color property allows to add the property 'color' to the dataset of the label -->
+            <div id="blue" class="color blue left" data-color="blue"></div>
+            <div id="violet" class="color violet right" data-color="violet"></div>
+            <div id="orange" class="color orange left" data-color="orange"></div>
+            <div id="green" class="color green right" data-color="green"></div>
             <button id="btnBegin" class="btn-start" onclick="beginGame()">Start Game!</button>
         </div>
     </section>
@@ -48,47 +49,6 @@
         </ul>
         <p>Made by Xavier Pérez </p>
     </footer>
-
-    <script>
-        const btnBegin = document.getElementById('btnBegin')
-        const blue = document.getElementById('blue')
-        const violet = document.getElementById('violet')
-        const orange = document.getElementById('orange')
-        const green = document.getElementById('green')
-
-
-        class Game {
-            constructor () {
-                this.begin()
-                this.generateSequence()
-            }
-
-            begin() {
-                btnBegin.classList.add('hide')
-                this.level = 1
-                //JavaScript entiende que si asignamos a una propiedad una variable
-                //con el mismo nombre, no es necesario colocar los dos puntos :
-                this.colors = {
-                    blue,
-                    violet,
-                    orange,
-                    green
-                }
-            }
-
-            generateSequence() {
-                //Creamos un array para la secuencia que sera de 10 numeros (10 niveles)
-                //Luego llenamos el array con purso ceros con la función 'fill', para
-                //que la función map() pueda trabajar, ya que si no hay elementos, no 
-                //puede ejecutar nada.
-                this.sequence = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
-            }
-        }
-
-
-        function beginGame () {
-            window.game = new Game()
-        }
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>
