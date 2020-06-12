@@ -10,7 +10,7 @@ let countDownTime = 3
 
 class Game {
     constructor () {
-        this.counter()
+        this.countDown()
     }
 
     countDown() {
