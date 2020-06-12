@@ -5,26 +5,25 @@ const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 let actual_level = document.getElementById('actual_level')
 const LAST_LEVEL = 10
-let counterTime = 3
+let countDownTime = 3
 
 
 class Game {
     constructor () {
-        this.counter()
+        this.countDown()
     }
 
-    counter() {
-        btnBegin.textContent = counterTime;
+    countDown() {
+        btnBegin.textContent = countDownTime;
 
-        if(counterTime == 0){
+        if(countDownTime == 0){
             this.begin()
             this.generateSequence()
             setTimeout(() => this.nextLevel(), 500)
-            console.log('Final');
         }
         else{
-            counterTime -= 1;
-            setTimeout(() => this.counter(),1000);
+            countDownTime -= 1;
+            setTimeout(() => this.countDown(),1000);
         }
     }
 
