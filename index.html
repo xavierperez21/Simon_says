@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon says</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <img class="background_image" src="./assets/wood_floor.jpg" alt="">
     <header class="header">
         <div class="header_title">
-            <p>Simon Says game!</p>
+            <h1>SIMON SAYS GAME</h1>
         </div>
     </header>
+    
+    <section class="level_section">
+        <div class="level_section__indicator">
+            <p id="actual_level">Level: 1</p>
+        </div>
+    </section>
     
     <section class="container">
         <div class="container_gameboard">
@@ -49,6 +57,7 @@
         </ul>
         <p>Made by Xavier Pérez </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>

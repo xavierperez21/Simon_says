@@ -1,7 +1,21 @@
+@font-face {
+    font-family: 'Invasion2000';
+    src: url('./assets/font2/Invasion2000.eot');
+    src: url('./assets/font2/Invasion2000.eot?#iefix') format('embedded-opentype'),
+        url('./assets/font2/Invasion2000.woff2') format('woff2'),
+        url('./assets/font2/Invasion2000.woff') format('woff'),
+        url('./assets/font2/Invasion2000.ttf') format('truetype'),
+        url('./assets/font2/Invasion2000.svg#Invasion2000') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
-    margin: 0;
+    font-family: 'Muli', sans-serif;
     padding: 0;
     background-origin: border-box;
+    margin: 0;
 }
 
 body {
@@ -10,9 +24,16 @@ body {
     flex-flow: column;
 }
 
+.background_image {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+
 .header {
     width: 100%;
-    height: 6rem;
+    height: 9rem;
     outline: 1px solid gold;
     display: flex;
     justify-content: center;
@@ -23,28 +44,63 @@ body {
 .header_title {
     outline: 1px solid blue;
     /* line-height sirve para dar altura sola una linea y centrar lo que hay dentro */
-    line-height: 5rem;
-    flex: .5;
+    line-height: 3rem;
+    width: 100%;
     text-align: center;
+}
+
+.header_title h1 {
+    font-family: 'Invasion2000';
+    font-size: 50px;
+    font-weight: normal;
+    color: orange;
+    -webkit-text-stroke: 2px black;
+    /* color: transparent;  */
+}
+
+.level_section {
+    width: 100%;
+    height: 5rem;
+    outline: 1px solid silver;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.level_section__indicator {
+    color: white;
+}
+
+.level_section__indicator p {
+    font-family: 'Invasion2000';
+    font-size: 3rem;
+    -webkit-text-stroke: 2px black;
+
 }
 
 .container {
     height: inherit;
     outline: 1px solid green;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .container_gameboard {
+    position: relative;
     height: 100vh;
     width: 100vh;
     border-radius: 50%;
     /* background-color: green; */
-    outline: 1px solid green;
+    outline: 1px solid orange;
     overflow: hidden;
     max-width: 60vh;
     max-height: 60vh;
     margin: 0 auto;
+    border: 10px solid black;
+    /* box-shadow: 0px 0px 68px 12px rgba(0,0,0,0.75); */
+    box-shadow: 0px 0px 18px 12px rgba(0,0,0,0.75);
 }
 
 
@@ -95,19 +151,24 @@ body {
 }
 
 .btn-start {
-    width: 400px;
+    font-family: 'Invasion2000';
+    width: 100%;
     height: 100px;
     background: #ECF0F1;
-    color: #2C3E50;
+    color: black;
     font-size: 2.5rem;
     position: absolute;
     top: calc(50% - 40px);
-    left: calc(50% - 200px)    
+    left: 0;
+    right: 0;
+    border-radius: 40px;    
+    box-shadow: 0px 0px 4px 5px rgba(0,0,0,0.75);
 }
 
 .hide {
     display: none;
 }
+
 
 .footer {
     display: flex;
@@ -121,6 +182,8 @@ body {
 
 .footer p {
     margin-top: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 .social_media {
@@ -131,3 +194,8 @@ body {
     list-style: none;
     margin-right: 10px;
 }
+
+@media only screen and (max-width: 600px){
+    .header_title h1 {
+        font-size: 2.5rem;
+    }

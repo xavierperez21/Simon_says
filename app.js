@@ -3,24 +3,43 @@ const blue = document.getElementById('blue')
 const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
-const LAST_LEVEL = 10
+let actual_level = document.getElementById('actual_level')
+const LAST_LEVEL = 3
+let counterTime = 3
 
 
 class Game {
     constructor () {
-        this.begin()
-        this.generateSequence()
-        setTimeout(() => this.nextLevel(), 600)
+        this.counter()
     }
 
+    counter() {
+        btnBegin.textContent = counterTime;
 
+        if(counterTime == 0){
+            this.begin()
+            this.generateSequence()
+            setTimeout(() => this.nextLevel(), 500)
+            console.log('Final');
+        }
+        else{
+            counterTime -= 1;
+            setTimeout(() => this.counter(),1000);
+        }
+    }
+
+    
     begin() {
         //We do this because we don't want to lose the context of "this". go to the method choseColor() to know more. 
         this.choseColor = this.choseColor.bind(this)
-        btnBegin.classList.add('hide')
+        
+        this.toggleBtnBegin()
+
         this.level = 1
-        //JavaScript entiende que si asignamos a una propiedad una variable
-        //con el mismo nombre, no es necesario colocar los dos puntos :
+        this.showActualLevel(this.level)
+        
+        //JavaScript understands that if we assign a property to a variable
+        //that has the same name, there's no need to put the two points :
         this.colors = {
             blue,
             violet,
@@ -29,12 +48,22 @@ class Game {
         }
     }
 
+    toggleBtnBegin () {
+        if (btnBegin.classList.contains('hide')){
+            btnBegin.classList.remove('hide')
+            btnBegin.textContent = "Start Game!"
+        }
+        else {
+            btnBegin.classList.add('hide')
+        }
+    }
+
 
     generateSequence() {
-        //Creamos un array para la secuencia que sera de 10 numeros (10 niveles)
-        //Luego llenamos el array con purso ceros con la función 'fill', para
-        //que la función map() pueda trabajar, ya que si no hay elementos, no 
-        //puede ejecutar nada.
+        //We creat an array for the sequence that's gonna be of 10 numbers (10 levels)
+        //Then we fill the array with ceros using the method 'fill', so that the
+        //method map() can work. This is becasue if we don't have elements in the array 
+        //the methodd map() can't work.
         this.sequence = new Array(LAST_LEVEL).fill(0).map(n => Math.floor(Math.random() * 4))
     }
 
@@ -75,7 +104,7 @@ class Game {
 
 
     illuminateSequence() {
-        for (var i = 0; i < this.level; i++){
+        for (let i = 0; i < this.level; i++){
             const color = this.transformNumberToColor(this.sequence[i])
             setTimeout(() => this.illuminateColor(color), 1000 * i)
         }
@@ -94,7 +123,7 @@ class Game {
 
 
     addClickEvents() {
-        //When we don't want to lose the context of "this" when we call other 
+        //If we don't want to lose the context of "this" when we call other 
         //method of the class inside other function, like when we use the addEventListener
         //We have to use the method "bind()" to keep the context of "this" to
         //still be our object "Game".
@@ -126,18 +155,42 @@ class Game {
             this.correctAnswers++
             if (this.correctAnswers === this.level) {
                 this.level++
+                this.showActualLevel(this.level)
                 this.eliminateClickEvents()
                 if (this.level === (LAST_LEVEL + 1)) {
-                    // Win!
+                    this.winGame()
                 }
                 else {
-                    setTimeout(() => this.nextLevel(), 1200)
+                    setTimeout(() => {
+                        this.nextLevel()
+                    }, 1200)
                 }
             }
         }
         else {
-            // Lose
+            this.gameOver()
         }
+    }
+
+    showActualLevel (level) {
+        if (level != (LAST_LEVEL + 1)){
+            actual_level.textContent = `Level: ${level}`;
+        }
+    }
+
+    winGame() {
+        //Swal returns a Promise
+        swal("Simon","Congratulations! you win the game!", "success")
+            .then(() => this.begin())
+    }
+
+    gameOver() {
+        //Swal returns a Promise
+        swal("Simon","Sorry! you lose :(!", "error")
+            .then(() => {
+                this.eliminateClickEvents()
+                this.begin()
+            })
     }
 
 }
