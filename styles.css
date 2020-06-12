@@ -78,9 +78,7 @@ body {
 .container {
     height: inherit;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
 }
 
 .container_gameboard {
@@ -205,3 +203,24 @@ body {
     .header_title h1 {
         font-size: 2.5rem;
     }
+}
+
+@media only screen and (max-width: 450px){
+    .header_title h1 {
+        font-size: 2.2rem;
+    }
+
+    .container_gameboard {
+        height: 50vh;
+    }
+
+    .btn-start {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 350px){
+    .container_gameboard {
+        height: 40vh;
+    }
+}
