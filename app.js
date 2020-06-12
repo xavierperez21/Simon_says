@@ -4,7 +4,7 @@ const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 let actual_level = document.getElementById('actual_level')
-const LAST_LEVEL = 3
+const LAST_LEVEL = 10
 let counterTime = 3
 
 
@@ -28,7 +28,7 @@ class Game {
         }
     }
 
-    
+
     begin() {
         //We do this because we don't want to lose the context of "this". go to the method choseColor() to know more. 
         this.choseColor = this.choseColor.bind(this)
