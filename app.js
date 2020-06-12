@@ -3,9 +3,9 @@ const blue = document.getElementById('blue')
 const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
-let actual_level = document.getElementById('actual_level')
+const actual_level = document.getElementById('actual_level')
 const LAST_LEVEL = 10
-let countDownTime = 3
+const countDownTime = 3
 
 
 class Game {
