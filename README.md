@@ -1,6 +1,6 @@
 # Simon says game! 🎮
 
-##### This is the final project from the course "JavaScript Fundamentals" course by Platzi.
+##### This is the final project from the course "JavaScript Fundamentals" by Platzi.
 
 The project consisted on develop a "Simon says" game using HTML, CSS3 and JavaScript.
 
